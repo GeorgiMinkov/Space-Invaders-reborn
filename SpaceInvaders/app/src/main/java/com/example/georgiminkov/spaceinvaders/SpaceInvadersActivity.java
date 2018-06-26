@@ -2,12 +2,36 @@ package com.example.georgiminkov.spaceinvaders;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.graphics.Point;
+import android.view.Display
 
 public class SpaceInvadersActivity extends AppCompatActivity {
+    SpaceInvadersView spaceInvadersView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_space_invaders);
+    protected void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
+
+        Display display = getWindowManager().getDefaultDisplay();
+
+        Point resolution = new Point();
+        display.getSize(resolution);
+
+        spaceInvadersView = new SpaceInvadersView(this, resolution.x, rezolution.y);
+        setContentView(spaceInvadersView);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        spaceInvadersView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        spaceInvadersView.onPause();
     }
 }
