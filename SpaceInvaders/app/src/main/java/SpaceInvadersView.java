@@ -1,11 +1,15 @@
+package com.example.georgiminkov.spaceinvaders;
+
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -60,13 +64,130 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
     }
 
+    @Override
+    public void run() {
+        while (isPlaying()) {
+            long startFrameTime = System.currentTimeMillis();
+
+            if (!isPaused()) {
+                update();
+            }
+
+            draw();
+
+            timeForThisFrame = System.currentTimeMillis() - startFrameTime;
+            if (timeForThisFrame >= 1) {
+                fps = 1000 / timeForThisFrame;
+            }
+
+            //
+        }
+    }
+
+    private void update() {
+        boolean bubped = false;
+        boolean lost = false;
+
+        // Move the player's ship
+
+        // Update the invaders if visible
+
+        // Update all the invaders bullets if active
+
+        // Did an invader bump into the edge of the screen
+
+        if(lost){
+            prepareLevel();
+        }
+
+        // Update the players bullet
+
+        // Has the player's bullet hit the top of the screen
+
+        // Has an invaders bullet hit the bottom of the screen
+
+        // Has the player's bullet hit an invader
+
+        // Has an alien bullet hit a shelter brick
+
+        // Has a player bullet hit a shelter brick
+
+        // Has an invader bullet hit the player ship
+    }
+
+    private void draw() {
+        if (holder.getSurface().isValid()) {
+            canvas = holder.lockCanvas();
+
+            // background for alpha
+            canvas.drawColor(Color.argb(255, 26, 128, 182));
+
+            paint.setColor(Color.argb(255,255,255,255));
+
+            // Draw the player spaceship
+
+            // Draw the invaders
+
+            // Draw the bricks if visible
+
+            // Draw the players bullet if active
+
+            // Draw the invaders bullets if active
+
+            // Draw the score and remaining lives
+            // Change the brush color
+            paint.setColor(Color.argb(255,  249, 129, 0));
+            paint.setTextSize(40);
+
+            canvas.drawText("Score: " + score + "   Lives: " + lives, 10, 50, paint);
+
+            holder.unlockCanvasAndPost(canvas);
+        }
+    }
+
+    public void pause() {
+        paused = false;
+
+        try {
+            gameThread.join();
+        } catch(InterruptedException ex) {
+            Log.e("Error: ", "joining thread");
+        }
+    }
+
+    public void resume() {
+        playing = true;
+
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN: break;
+
+            case MotionEvent.ACTION_UP: break;
+        }
+        return true;
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+
     Context context;
 
     private Thread gameThread = null;
 
     private SurfaceHolder holder;
 
-    private volatile boolean isPlaying;
+    private volatile boolean playing;
 
     private boolean paused = true;
 

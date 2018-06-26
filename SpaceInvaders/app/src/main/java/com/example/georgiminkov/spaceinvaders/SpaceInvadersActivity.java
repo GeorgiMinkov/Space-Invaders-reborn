@@ -25,13 +25,13 @@ public class SpaceInvadersActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        spaceInvadersView.onResume();
+        spaceInvadersView.resume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        spaceInvadersView.onPause();
+        spaceInvadersView.pause();
     }
 }
