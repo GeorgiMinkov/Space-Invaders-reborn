@@ -9,7 +9,6 @@ import android.widget.Button;
 
 public class IntroActivity extends AppCompatActivity {
 
-//    private startButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
