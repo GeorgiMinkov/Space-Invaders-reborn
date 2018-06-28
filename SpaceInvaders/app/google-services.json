@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "350134428609",
+    "firebase_url": "https://space-invaders-game.firebaseio.com",
+    "project_id": "space-invaders-game",
+    "storage_bucket": "space-invaders-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350134428609:android:b739fa9b4cee2db4",
+        "android_client_info": {
+          "package_name": "fmi.course.simmim.spaceinvader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350134428609-j203e227vrmv1bstb76d7lp662vf86pu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fmi.course.simmim.spaceinvader",
+            "certificate_hash": "7b1e82ecd7f94fcfbb1873c8510058db5bef506d"
+          }
+        },
+        {
+          "client_id": "350134428609-o1cfie2m30gf3fji4015srit1hu0t6np.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDElHKCsd0kGlOVgpZp7gvOqMBDTzQgOjo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350134428609-o1cfie2m30gf3fji4015srit1hu0t6np.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350134428609:android:cc7cec1519e06005",
+        "android_client_info": {
+          "package_name": "fmi.course.simmim.spaceinvaders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350134428609-40i64p7eifsptsrqg6sts5p4j5gpiomf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fmi.course.simmim.spaceinvaders",
+            "certificate_hash": "7b1e82ecd7f94fcfbb1873c8510058db5bef506d"
+          }
+        },
+        {
+          "client_id": "350134428609-o1cfie2m30gf3fji4015srit1hu0t6np.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDElHKCsd0kGlOVgpZp7gvOqMBDTzQgOjo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350134428609-o1cfie2m30gf3fji4015srit1hu0t6np.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
