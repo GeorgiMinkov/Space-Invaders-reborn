@@ -3,23 +3,6 @@ package fmi.course.simmim.spaceinvaders;
 import android.graphics.RectF;
 
 public class Bullet {
-    // Make base class for bullet and brick -> Craft
-    private float coordinateX;
-    private float coordinateY;
-
-    private RectF rect;
-
-    private final int UP = 0;
-    private final int DOWN = 1;
-
-    private int heading = -1;
-    private int speed = 350;
-
-    private int width = 1;
-    private int height;
-
-    private boolean isActive;
-
     public Bullet(int screenResolutionY) {
         height = screenResolutionY / 20;
         isActive = false;
@@ -72,4 +55,21 @@ public class Bullet {
         rect.top = coordinateY;
         rect.bottom = coordinateY + height;
     }
+
+    public static final int UP = 0;
+    public static final int DOWN = 1;
+
+    private float coordinateX;
+    private float coordinateY;
+
+    private RectF rect;
+
+
+    private int heading = -1;
+    private int speed = 350;
+
+    private int width = 1;
+    private int height;
+
+    private boolean isActive;
 }

@@ -5,14 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class PlayerShip extends Craft {
-    private Bitmap bitmap;
-
-    public final int STOPPED = 0;
-    public final int LEFT = 1;
-    public final int RIGHT = 2;
-
-    private int shipMovement = STOPPED;
-
     PlayerShip(Context context, int screenResolutionX, int screenResolutionY) {
         super();
 
@@ -52,4 +44,12 @@ public class PlayerShip extends Craft {
 
         this.updateRect();
     }
+
+    public final int STOPPED = 0;
+    public final int LEFT = 1;
+    public final int RIGHT = 2;
+
+    private Bitmap bitmap;
+
+    private int shipMovement = STOPPED;
 }
