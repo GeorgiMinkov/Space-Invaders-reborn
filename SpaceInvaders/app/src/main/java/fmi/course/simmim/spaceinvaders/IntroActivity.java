@@ -30,7 +30,7 @@ public class IntroActivity extends AppCompatActivity {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent quitGame = new Intent(IntroActivity.this, LoginActivity.class);
+                finish();
             }
         });
     }
