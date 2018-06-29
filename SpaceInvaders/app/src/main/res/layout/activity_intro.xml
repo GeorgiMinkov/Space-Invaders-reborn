@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/intro_background"
     tools:context=".IntroActivity">
 
     <ProgressBar
@@ -27,6 +28,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textSize="35sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="80dp"
                 android:text="@string/welcome_to_space_invaders"/>
 
             <Button
