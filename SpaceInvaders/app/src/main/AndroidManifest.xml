@@ -9,21 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-<<<<<<< HEAD
-        <activity android:name=".SpaceInvadersActivity" >
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
 
         <activity android:name=".LoginActivity" >
-=======
+        </activity>
         <activity android:name=".SpaceInvadersActivity"
-            android:screenOrientation="landscape"
-            >
->>>>>>> remotes/origin/Game-Design
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
