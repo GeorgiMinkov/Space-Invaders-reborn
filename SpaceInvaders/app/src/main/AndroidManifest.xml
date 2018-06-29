@@ -10,21 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="userPortrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity android:name=".SpaceInvadersActivity"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
-        <activity android:name=".IntroActivity">
-
+        <activity android:name=".IntroActivity"
+            android:screenOrientation="landscape">
         </activity>
-
-
 
     </application>
 
