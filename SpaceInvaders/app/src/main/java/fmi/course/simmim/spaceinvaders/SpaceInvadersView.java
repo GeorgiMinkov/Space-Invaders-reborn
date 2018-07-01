@@ -434,7 +434,6 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
     private int damageShelterID = -1;
     private int uhID = -1;
     private int ohID = -1;
-    private Map<String, String> soungs;
 
     int score = 0;
 
