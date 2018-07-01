@@ -1,7 +1,5 @@
 package fmi.course.simmim.spaceinvaders;
 
-import android.R.string;
-
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -19,6 +17,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class SpaceInvadersView extends SurfaceView implements Runnable {
     public SpaceInvadersView(Context context, int screenResolutionX, int screenResolutionY) {
@@ -34,41 +33,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
         this.soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
-        try {
-            AssetManager assetManager = context.getAssets();
-            AssetFileDescriptor descriptor;
-
-//            descriptor = assetManager.openFd("shoot.ogg");
-//            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.shoot_sound));
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.shoot_sound));
-            this.shootID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.invader_explode));
-//            descriptor = assetManager.openFd("invaderexplode.ogg");
-            this.invaderExplodeID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.damage_shelter));
-//            descriptor = assetManager.openFd("damageshelter.ogg");
-            this.damageShelterID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.player_explode));
-//            descriptor = assetManager.openFd("playerexplode.ogg");
-            this.playerExplodeID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.damage_shelter));
-//            descriptor = assetManager.openFd("damageshelter.ogg");
-            this.damageShelterID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.oh_sound));
-//            descriptor = assetManager.openFd("oh.ogg");
-            this.ohID = soundPool.load(descriptor, 0);
-
-            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.uh_sound));
-//            descriptor = assetManager.openFd("uh.ogg");
-            this.uhID = soundPool.load(descriptor, 0);
-        } catch(IOException ex) {
-            Log.e("error", "failed to load sound files");
-        }
+        loadAudio();
 
         prepareLevel();
     }
@@ -369,7 +334,6 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
                 }
 
                 if(motionEvent.getY() < screenResolutionY - screenResolutionY / 8) {
-                    // Shots fired
                     if(bullet.shoot(playerShip.getCoordinateX()+ playerShip.getLength() / 2,
                             screenResolutionY,bullet.UP)){
                         soundPool.play(shootID, 1, 1, 0, 0, 1);
@@ -396,6 +360,36 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         return paused;
     }
 
+    private void loadAudio() {
+        try {
+            AssetManager assetManager = context.getAssets();
+            AssetFileDescriptor descriptor;
+
+            descriptor = assetManager.openFd(context.getString(R.string.shoot_sound));
+            this.shootID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.invader_explode));
+            this.invaderExplodeID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.damage_shelter));
+            this.damageShelterID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.player_explode));
+            this.playerExplodeID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.damage_shelter));
+            this.damageShelterID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.oh_sound));
+            this.ohID = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd(context.getString(R.string.uh_sound));
+            this.uhID = soundPool.load(descriptor, 0);
+        } catch(IOException ex) {
+            Log.e("error", "failed to load sound files");
+        }
+
+    }
 
     Context context;
 
@@ -440,6 +434,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
     private int damageShelterID = -1;
     private int uhID = -1;
     private int ohID = -1;
+    private Map<String, String> soungs;
 
     int score = 0;
 

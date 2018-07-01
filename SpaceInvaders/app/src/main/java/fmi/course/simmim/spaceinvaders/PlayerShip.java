@@ -8,11 +8,11 @@ public class PlayerShip extends Craft {
     PlayerShip(Context context, int screenResolutionX, int screenResolutionY) {
         super();
 
-        this.setLength(screenResolutionX / 10);
-        this.setHeight(screenResolutionY / 10);
+        this.setLength(screenResolutionX / SCREEN_PROPORTION);
+        this.setHeight(screenResolutionY / SCREEN_PROPORTION);
 
         this.setCoordinateX(screenResolutionX / 2);
-        this.setCoordinateY(screenResolutionY - 20);
+        this.setCoordinateY(screenResolutionY - SCREEN_PROPORTION * 2);
 
         this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.playership);
 
@@ -26,7 +26,6 @@ public class PlayerShip extends Craft {
         return bitmap;
     }
 
-    // TO DO - EXCEPTION FOR INCORRENCT INPUT
     public void setShipMovement(int state) {
         if (state >= STOPPED && state <= RIGHT) {
             this.shipMovement = state;
@@ -52,4 +51,6 @@ public class PlayerShip extends Craft {
     private Bitmap bitmap;
 
     private int shipMovement = STOPPED;
+
+    private final int SCREEN_PROPORTION = 10;
 }
