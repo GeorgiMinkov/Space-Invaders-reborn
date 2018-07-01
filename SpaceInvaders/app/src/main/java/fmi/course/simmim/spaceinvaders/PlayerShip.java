@@ -4,6 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+/**
+ * PlayerShip class extends Craft, represent player controlled object
+ * Main functionality - direction set of movement, graphic set, size calculation
+ */
+
 public class PlayerShip extends Craft {
     PlayerShip(Context context, int screenResolutionX, int screenResolutionY) {
         super();
@@ -32,6 +37,10 @@ public class PlayerShip extends Craft {
         }
     }
 
+    /**
+     * update() - calculate movement position on the base of direction and fps
+     * @param fps - parameter used for display condition
+     */
     public void update(long fps) {
         if (this.shipMovement == this.LEFT) {
             this.setCoordinateX(this.getCoordinateX() - this.getShipSpeed() / fps);

@@ -6,6 +6,15 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.View;
 
+/**
+ * SpaceInvadersActiity uses SpaceInvadersView instance @param spaceInvadersView to construct
+ * game engine and to visualize gaming components
+ *
+ * @author GeorgiMinkov
+ * @since 29.06.2018
+ * @version 1.0
+ */
+
 public class SpaceInvadersActivity extends AppCompatActivity {
     SpaceInvadersView spaceInvadersView;
 

@@ -2,6 +2,11 @@ package fmi.course.simmim.spaceinvaders;
 
 import android.graphics.RectF;
 
+/**
+ * Craft class that used for base of PlayerShip and AI Invaders
+ * Consume basic parts for - position of object, size and object screen speed
+ */
+
 public class Craft {
     public Craft() {
         this.rect = new RectF();

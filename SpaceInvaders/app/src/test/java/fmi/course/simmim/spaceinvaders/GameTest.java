@@ -30,24 +30,24 @@ public class GameTest {
 //        return method.invoke(targetObject, argObjects);
 //    }
 
-    @Test
-    public void testIfUnactiveBulletCanShoot() {
-        boolean expectedResult = true;
-
-        float startX = 1, startY = 1;
-        int direction = Bullet.DOWN;
-
-        int screenRezolutionY = 1;
-
-        Bullet loadedBullet = new Bullet(screenRezolutionY);
-
-        Assert.assertEquals(expectedResult, loadedBullet.shoot(startX, startY, direction));
-    }
-
-    @Test
-    public void testIfInvaderWillShoot() {
-
-    }
+//    @Test
+//    public void testIfUnactiveBulletCanShoot() {
+//        boolean expectedResult = true;
+//
+//        float startX = 1, startY = 1;
+//        int direction = Bullet.DOWN;
+//
+//        int screenRezolutionY = 1;
+//
+//        Bullet loadedBullet = new Bullet(screenRezolutionY);
+//
+//        Assert.assertEquals(expectedResult, loadedBullet.shoot(startX, startY, direction));
+//    }
+//
+//    @Test
+//    public void testIfInvaderWillShoot() {
+//
+//    }
 
 
 }

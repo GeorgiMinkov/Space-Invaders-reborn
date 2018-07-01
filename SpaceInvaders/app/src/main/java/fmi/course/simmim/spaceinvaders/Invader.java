@@ -6,6 +6,13 @@ import android.graphics.BitmapFactory;
 
 import java.util.Random;
 
+/**
+ * Invader class extends Craft, representing artificial attackers.
+ * Main parameters:
+ * @param movementShifUp and @param movementShiftDown - Bitmaps visualizing invaders movements
+ * @param shipMoving - direction of movement
+ */
+
 public class Invader extends Craft{
     public Invader(Context context, int row, int column, int screenResolutionX, int screenResolutionY) {
         super();
@@ -52,6 +59,10 @@ public class Invader extends Craft{
         return movementShiftDown;
     }
 
+    /**
+     * update() - calculate movement position on the base of direction and fps
+     * @param fps - parameter used for display condition
+     */
     public void update(long fps) {
         if (this.shipMoving == LEFT) {
             this.setCoordinateX(this.getCoordinateX() - this.getShipSpeed() / fps);
@@ -75,6 +86,14 @@ public class Invader extends Craft{
         this.setShipSpeed(this.getShipSpeed() * SPEED_COEFFICIENT);
     }
 
+    /**
+     * takeAim - invader artificial intelligence. Detects detects if the Invader object is
+     * approximately horizontally aligned with the player ship. If so invader will take a shot
+     * with increased chance of hitting the target.
+     * @param playerShipX - position by axis X
+     * @param playerShipLength - width of player ship
+     * @return - return true or false on base of firing bullet
+     */
     public boolean takeAim(float playerShipX, float playerShipLength) {
         int randomNumber = -1;
 
