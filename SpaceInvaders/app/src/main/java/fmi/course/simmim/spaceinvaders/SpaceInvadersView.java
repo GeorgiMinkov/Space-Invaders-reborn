@@ -19,6 +19,10 @@ import android.view.SurfaceView;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * SpaceInvadersView - connect all parts of game together
+ */
+
 public class SpaceInvadersView extends SurfaceView implements Runnable {
     public SpaceInvadersView(Context context, int screenResolutionX, int screenResolutionY) {
         super(context);
@@ -38,6 +42,9 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         this.prepareLevel();
     }
 
+    /**
+     * prepareLevel - initialize all our game objects and get ready to play the game
+     */
     private void prepareLevel() {
         this.playerShip = new PlayerShip(context, screenResolutionX, screenResolutionY);
 
@@ -154,6 +161,15 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         }
     }
 
+    /**
+     * draw() - Visualize components on the screen:
+     * - background
+     * - playerShip
+     * - invaders
+     * - bullets
+     * - bricks
+     * - score points
+     */
     private void draw() {
         if (holder.getSurface().isValid()) {
             canvas = holder.lockCanvas();
@@ -218,6 +234,11 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         gameThread.start();
     }
 
+    /**
+     * onTouchEvent - track for click(touch) on the screen and take action of movement  ot shooting
+     * @param motionEvent - input parameter for touch motion
+     * @return - does game is in paused mode
+     */
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
