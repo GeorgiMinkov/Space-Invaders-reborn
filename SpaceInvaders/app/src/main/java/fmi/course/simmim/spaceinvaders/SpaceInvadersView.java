@@ -4,6 +4,7 @@ package fmi.course.simmim.spaceinvaders;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -286,8 +287,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
             canvas = holder.lockCanvas();
 
             // background for alpha
-            canvas.drawColor(Color.argb(255, 26, 128, 182));
 
+            canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.intro_background), 0, 0, null);
             paint.setColor(Color.argb(255,255,255,255));
 
             // Draw the player spaceship

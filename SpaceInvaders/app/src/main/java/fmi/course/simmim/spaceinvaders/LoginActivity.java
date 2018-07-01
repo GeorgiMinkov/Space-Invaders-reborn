@@ -24,10 +24,6 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "simmim@example.com",  "bar@example.com:world"
-    };
-
     private AutoCompleteTextView emailView;
     private EditText passwordView;
 
@@ -43,8 +39,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
         //TODO: create here the logic for the database call for authentication
         setContentView(R.layout.activity_login);
         emailView = findViewById(R.id.email);
-
-//        populateAutoComplete();
 
         passwordView = findViewById(R.id.password);
         passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -76,24 +70,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    //use for authentication:
     private void attemptLogin() {
         if (authTask != null) {
             return;
         }
 
-        // Reset errors.
         emailView.setError(null);
         passwordView.setError(null);
 
-        // Store values at the time of the login attempt.
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             passwordView.setError(getString(R.string.error_invalid_password));
             focusView = passwordView;
@@ -131,8 +121,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         //todo: check in the db for a wrong password
+        //todo: add regex validation:
         return password.length() > 4;
     }
 
@@ -214,15 +204,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
             }
 
             //TODO: check the db for existing user/pass:
-//            for (String credential : DUMMY_CREDENTIALS) {
-//                String[] pieces = credential.split(":");
-//                if (pieces[0].equals(mEmail)) {
-//                    // Account exists, return true if the password matches.
-//                    return pieces[1].equals(mPassword);
-//                }
-//            }
-
-            // TODO: register the new account here.
             return true;
         }
 
