@@ -14,4 +14,10 @@
     <string name="welcome_to_space_invaders">Welcome to space invaders!</string>
     <string name="start_game">Start game</string>
     <string name="quit_game">Quit game</string>
+    <string name="shoot_sound">shoot.ogg</string>
+    <string name="invader_explode">invaderexplode.ogg</string>
+    <string name="damage_shelter">damageshelter.ogg</string>
+    <string name="player_explode">playerexplode.ogg</string>
+    <string name="oh_sound">oh.ogg</string>
+    <string name="uh_sound">uh.ogg</string>
 </resources>

@@ -64,7 +64,6 @@ public class Bullet {
 
     private RectF rect;
 
-
     private int heading = -1;
     private int speed = 350;
 
