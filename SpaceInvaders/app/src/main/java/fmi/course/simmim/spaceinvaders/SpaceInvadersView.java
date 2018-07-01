@@ -1,9 +1,11 @@
 package fmi.course.simmim.spaceinvaders;
 
+import android.R.string;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -36,25 +38,33 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
             AssetManager assetManager = context.getAssets();
             AssetFileDescriptor descriptor;
 
-            descriptor = assetManager.openFd("shoot.ogg");
+//            descriptor = assetManager.openFd("shoot.ogg");
+//            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.shoot_sound));
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.shoot_sound));
             this.shootID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("invaderexplode.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.invader_explode));
+//            descriptor = assetManager.openFd("invaderexplode.ogg");
             this.invaderExplodeID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("damageshelter.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.damage_shelter));
+//            descriptor = assetManager.openFd("damageshelter.ogg");
             this.damageShelterID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("playerexplode.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.player_explode));
+//            descriptor = assetManager.openFd("playerexplode.ogg");
             this.playerExplodeID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("damageshelter.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.damage_shelter));
+//            descriptor = assetManager.openFd("damageshelter.ogg");
             this.damageShelterID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("oh.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.oh_sound));
+//            descriptor = assetManager.openFd("oh.ogg");
             this.ohID = soundPool.load(descriptor, 0);
 
-            descriptor = assetManager.openFd("uh.ogg");
+            descriptor = assetManager.openFd(Resources.getSystem().getString(R.string.uh_sound));
+//            descriptor = assetManager.openFd("uh.ogg");
             this.uhID = soundPool.load(descriptor, 0);
         } catch(IOException ex) {
             Log.e("error", "failed to load sound files");
@@ -108,20 +118,19 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
                 fps = 1000 / timeForThisFrame;
             }
 
-            // We will do something new here towards the end of the project
             // Play a sound based on the menace level
             if(!paused) {
-                if ((startFrameTime - lastMenaceTime)> menaceInterval) {
+                if ((startFrameTime - lastMenaceTime) > menaceInterval) {
                     if (uhOrOh) {
-                        // Play Uh
                         soundPool.play(uhID, 1, 1, 0, 0, 1);
 
                     } else {
-                        // Play Oh
                         soundPool.play(ohID, 1, 1, 0, 0, 1);
                     }
+
                     // Reset the last menace time
                     lastMenaceTime = System.currentTimeMillis();
+
                     // Alter value of uhOrOh
                     uhOrOh = !uhOrOh;
                 }
@@ -135,9 +144,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
         // Move the player's ship
         playerShip.update(fps);
-        // Update the invaders if visible
 
-        // Update the players bullet
         if(bullet.getStatus()){
             bullet.update(fps);
         }
@@ -151,16 +158,10 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
         for(int i = 0; i < numberOfInvaders; i++){
             if(invaders[i].getVisibility()) {
-
-                // Move the next invader
                 invaders[i].update(fps);
 
-                // Does he want to take a shot?
                 if(invaders[i].takeAim(playerShip.getCoordinateX(), playerShip.getLength())){
-
-                    // If so try and spawn a bullet
                     if(invadersBullets[nextBullet].shoot(invaders[i].getCoordinateX() + invaders[i].getLength() / 2, invaders[i].getCoordinateY(), bullet.DOWN)) {
-
                         nextBullet++;
 
                         if (nextBullet == MAX_INVADERS_BULLETS) {
@@ -185,9 +186,6 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
                 if(invaders[i].getCoordinateY() > screenResolutionY - screenResolutionY / 10){
                     lost = true;
                 }
-
-
-
             }
 
             menaceInterval = menaceInterval - 80;
@@ -267,10 +265,10 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
             if(invadersBullets[i].getStatus()){
                 if(RectF.intersects(playerShip.getRect(), invadersBullets[i].getRect())){
                     invadersBullets[i].setInactive();
-                    lives --;
+                    lives--;
                     soundPool.play(playerExplodeID, 1, 1, 0, 0, 1);
 
-                    if(lives == 0){
+                    if(lives == 0) {
                         paused = true;
                         lives = 3;
                         score = 0;
@@ -286,8 +284,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         if (holder.getSurface().isValid()) {
             canvas = holder.lockCanvas();
 
-            // background for alpha
-
+            // draw background layout
             canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.intro_background), 0, 0, null);
             paint.setColor(Color.argb(255,255,255,255));
 
@@ -307,14 +304,14 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
 
             // Draw the bricks if visible
-            for(int i = 0; i < numberOfBricks; i++){
+            for(int i = 0; i < numberOfBricks; i++) {
                 if(bricks[i].getVisibility()) {
                     canvas.drawRect(bricks[i].getRect(), paint);
                 }
             }
 
             // Draw the players bullet if active
-            if(bullet.getStatus()){
+            if(bullet.getStatus()) {
                 canvas.drawRect(bullet.getRect(), paint);
             }
 
@@ -327,8 +324,6 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
                 }
             }
 
-            // Draw the score and remaining lives
-            // Change the brush color
             paint.setColor(Color.argb(255,  249, 129, 0));
             paint.setTextSize(40);
             canvas.drawText("Score: " + score + "   Lives: " + lives, 10,50, paint);
@@ -361,7 +356,6 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
             // Player has touched the screen
             case MotionEvent.ACTION_DOWN:
-
                 paused = false;
 
                 if(motionEvent.getY() > screenResolutionY - screenResolutionY / 8) {
@@ -376,7 +370,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
                 if(motionEvent.getY() < screenResolutionY - screenResolutionY / 8) {
                     // Shots fired
-                    if(bullet.shoot(playerShip.getCoordinateX()+ playerShip.getLength()/2,
+                    if(bullet.shoot(playerShip.getCoordinateX()+ playerShip.getLength() / 2,
                             screenResolutionY,bullet.UP)){
                         soundPool.play(shootID, 1, 1, 0, 0, 1);
                     }
@@ -384,10 +378,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
                 break;
 
-
             // Player has removed finger from screen
             case MotionEvent.ACTION_UP:
-
                 if(motionEvent.getY() > screenResolutionY - screenResolutionY / 10) {
                     playerShip.setShipMovement(playerShip.STOPPED);
                 }
@@ -424,7 +416,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
     private int screenResolutionX;
     private int screenResolutionY;
 
-    // Player snarejenie
+    // Player ammo
     private PlayerShip playerShip;
     private Bullet bullet;
 
@@ -438,7 +430,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
     // defence btrick
     private DefenceBrick[] bricks = new DefenceBrick[400];
-    private int numberOfBricks = 0; /// without 0
+    private int numberOfBricks = 0;
 
     // SOUNDS
     private SoundPool soundPool;

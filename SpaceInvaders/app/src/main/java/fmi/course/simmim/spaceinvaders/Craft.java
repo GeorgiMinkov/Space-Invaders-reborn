@@ -3,16 +3,6 @@ package fmi.course.simmim.spaceinvaders;
 import android.graphics.RectF;
 
 public class Craft {
-    private RectF rect;
-
-    private float length;
-    private float height;
-
-    private float coordinateX;
-    private float coordinateY;
-
-    private float shipSpeed;
-
     public Craft() {
         this.rect = new RectF();
         this.length = 0.0f;
@@ -76,4 +66,14 @@ public class Craft {
     public void setShipSpeed(float shipSpeed) {
         this.shipSpeed = shipSpeed;
     }
+
+    private RectF rect;
+
+    private float length;
+    private float height;
+
+    private float coordinateX;
+    private float coordinateY;
+
+    private float shipSpeed;
 }
