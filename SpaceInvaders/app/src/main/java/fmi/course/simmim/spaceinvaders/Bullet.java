@@ -2,6 +2,9 @@ package fmi.course.simmim.spaceinvaders;
 
 import android.graphics.RectF;
 
+/**
+ * Bullet class represent weapon for Invader and PlayerShip classes
+ */
 public class Bullet {
     public Bullet(int screenResolutionY) {
         height = screenResolutionY / 20;
