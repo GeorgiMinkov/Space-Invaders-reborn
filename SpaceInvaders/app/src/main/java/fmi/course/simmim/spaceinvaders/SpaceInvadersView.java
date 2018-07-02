@@ -21,6 +21,7 @@ import java.util.Map;
 
 /**
  * SpaceInvadersView - connect all parts of game together
+ * 
  */
 
 public class SpaceInvadersView extends SurfaceView implements Runnable {
@@ -55,17 +56,17 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
 
         // build army of invaders
         numberOfInvaders = 0;
-        for (int column = 0; column < 6; ++column) {
-            for (int row = 0; row < 5; ++row) {
+        for (int column = 0; column < MAX_COLUMN; ++column) {
+            for (int row = 0; row < MAX_ROW; ++row) {
                 this.invaders[numberOfInvaders++] =  new Invader(context, row, column, screenResolutionX, screenResolutionY);
             }
         }
 
         // Build the shelters for player ship
         numberOfBricks = 0;
-        for(int shelterNumber = 0; shelterNumber < 4; shelterNumber++){
-            for(int column = 0; column < 10; column ++ ) {
-                for (int row = 0; row < 5; row++) {
+        for(int shelterNumber = 0; shelterNumber < MAX_ROW - 1; shelterNumber++){
+            for(int column = 0; column < 2 * MAX_ROW; column ++ ) {
+                for (int row = 0; row < MAX_ROW; row++) {
                     bricks[numberOfBricks++] = new DefenceBrick(row, column, shelterNumber, screenResolutionX, screenResolutionY);
                 }
             }
@@ -218,7 +219,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
     }
 
     public void pause() {
-        paused = false;
+        paused = true;
 
         try {
             gameThread.join();
@@ -442,20 +443,26 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
     private int screenResolutionX;
     private int screenResolutionY;
 
+    private final int MAX_BRICKS = 400;
+    private final int MAX_BULLETS = 200;
+    private final int MAX_INVADERS = 60;
+    private final int MAX_COLUMN = 6;
+    private final int MAX_ROW = 5;
+
     // Player ammo
     private PlayerShip playerShip;
     private Bullet bullet;
 
     // Invaders stuff
-    private Bullet[] invadersBullets = new Bullet[200];
+    private Bullet[] invadersBullets = new Bullet[MAX_BULLETS];
     private int nextBullet;
     private final int MAX_INVADERS_BULLETS = 10;
 
-    private Invader[] invaders = new Invader[60];
+    private Invader[] invaders = new Invader[MAX_INVADERS];
     private int numberOfInvaders = 0;
 
     // defence btrick
-    private DefenceBrick[] bricks = new DefenceBrick[400];
+    private DefenceBrick[] bricks = new DefenceBrick[MAX_BRICKS];
     private int numberOfBricks = 0;
 
     // SOUNDS

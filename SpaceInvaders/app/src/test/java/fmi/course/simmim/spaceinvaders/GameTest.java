@@ -10,44 +10,77 @@ import org.junit.Test;
 
 import java.lang.reflect.Method;
 
+import javax.annotation.processing.SupportedAnnotationTypes;
+
+/**
+ * GameTest - test basic functionality of the game
+ */
 public class GameTest {
-//    @Test
-//    public void testIsTouchedScreenResponding() {
-//        MotionEvent motionEvent = new MotionEvent();
-////        Display display = getWindowManager().getDefaultDisplay();
-////
-////        Point resolution = new Point();
-////        display.getSize(resolution);
-////
-////        spaceInvadersView = new SpaceInvadersView(this, resolution.x, resolution.y);
-////        SpaceInvadersView testView = new SpaceInvadersView(this, )
-////        Assert.assertEquals(true, );
-//    Context testC = new Context;
-//        SpaceInvadersView test = new SpaceInvadersView(testC, 0, 0);
-//
-//        Method method = SpaceInvadersView.getDeclaredMethod(loadAudio, argClasses);
-//        method.setAccessible(true);
-//        return method.invoke(targetObject, argObjects);
-//    }
+   @Test
+   public void testIfUnactiveBulletCanShoot() {
+       boolean expectedResult = true;
 
-//    @Test
-//    public void testIfUnactiveBulletCanShoot() {
-//        boolean expectedResult = true;
-//
-//        float startX = 1, startY = 1;
-//        int direction = Bullet.DOWN;
-//
-//        int screenRezolutionY = 1;
-//
-//        Bullet loadedBullet = new Bullet(screenRezolutionY);
-//
-//        Assert.assertEquals(expectedResult, loadedBullet.shoot(startX, startY, direction));
-//    }
-//
-//    @Test
-//    public void testIfInvaderWillShoot() {
-//
-//    }
+       float startX = 1, startY = 1;
+       int direction = Bullet.DOWN;
 
+       int screenRezolutionY = 1;
 
+       Bullet loadedBullet = new Bullet(screenRezolutionY);
+
+       Assert.assertEquals(expectedResult, loadedBullet.shoot(startX, startY, direction));
+   }
+
+   @Test
+   public void testIfInvaderWillShoot() {
+
+   }
+
+    @Test
+    public void testIfPausingStateIsTrueWhenGameIsPaused() {
+        Context currentState = InstrumentationRegistry.getTargetContext();
+        Display display = getWindowManager().getDefaultDisplay();
+
+        Point resolution = new Point();
+        display.getSize(resolution);
+
+        SpaceInvadersView testView = new SpaceInvadersView(currentState, resolution.x, resolution.y);
+
+        testView.pause();
+
+        boolean expectedResult = true;
+
+        Aseert.assertEquals(expectedResult, testView.isPaused());
+    }
+
+    @Test
+    public void testIfPLayingStateIsTrueWhenGameIsResume() {
+        Context currentState = InstrumentationRegistry.getTargetContext();
+        Display display = getWindowManager().getDefaultDisplay();
+
+        Point resolution = new Point();
+        display.getSize(resolution);
+
+        SpaceInvadersView testView = new SpaceInvadersView(currentState, resolution.x, resolution.y);
+
+        testView.pause();
+
+        testView.resume();
+
+        boolean expectedResult = true;
+
+        Assert.assertEquals(expectedResult, testView.isPlaying());
+    }
+
+    @Test
+   public void testIsTouchedScreenResponding() {
+        MotionEvent motionEvent = new MotionEvent();
+        Display display = getWindowManager().getDefaultDisplay();
+
+        Point resolution = new Point();
+        display.getSize(resolution);
+
+        Context testC = new Context();
+        SpaceInvadersView test = new SpaceInvadersView(testC, 0, 0);
+        Assert.assertEquals(true, test.onTouchEvent(motionEvent));
+   }
 }
