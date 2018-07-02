@@ -38,7 +38,9 @@ public class PlayerShip extends Craft {
     }
 
     /**
-     * update() - calculate movement position on the base of direction and fps
+     * update() - his update method will be called from {@link} update() in SpaceInvadersView
+     * It determines if the player ship needs to move and changes the coordinates
+     * calculate movement position on the base of direction and fps
      * @param fps - parameter used for display condition
      */
     public void update(long fps) {

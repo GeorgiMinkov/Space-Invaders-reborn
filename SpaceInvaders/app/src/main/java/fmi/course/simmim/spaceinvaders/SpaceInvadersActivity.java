@@ -7,7 +7,8 @@ import android.view.Display;
 import android.view.View;
 
 /**
- * SpaceInvadersActiity uses SpaceInvadersView instance @param spaceInvadersView to construct
+ * SpaceInvadersActivity is the entry point to the game.
+ * This activity uses SpaceInvadersView instance @param spaceInvadersView to construct
  * game engine and to visualize gaming components
  *
  * @author GeorgiMinkov

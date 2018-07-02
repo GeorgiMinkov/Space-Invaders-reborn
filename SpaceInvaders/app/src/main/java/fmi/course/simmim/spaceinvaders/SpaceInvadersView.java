@@ -21,7 +21,8 @@ import java.util.Map;
 
 /**
  * SpaceInvadersView - connect all parts of game together
- * 
+ * Extends SurfaveView so it can draw on screen and create objects.
+ * Implements Runnable so it can control game threads.
  */
 
 public class SpaceInvadersView extends SurfaceView implements Runnable {
@@ -285,6 +286,11 @@ public class SpaceInvadersView extends SurfaceView implements Runnable {
         return paused;
     }
 
+    /**
+     * loadAudio - load audio file from resource folder asset
+     * If @param assetManager cannot open and load file exception 
+     * rised and is logged.
+     */
     private void loadAudio() {
         try {
             AssetManager assetManager = context.getAssets();
