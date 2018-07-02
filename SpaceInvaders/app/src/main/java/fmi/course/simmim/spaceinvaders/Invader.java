@@ -10,12 +10,12 @@ public class Invader extends Craft{
     public Invader(Context context, int row, int column, int screenResolutionX, int screenResolutionY) {
         super();
 
-        this.setLength(screenResolutionX / 20);
-        this.setHeight(screenResolutionY / 20); // 20 -> PROPORTION = 20
+        this.setLength(screenResolutionX / PROPORTION);
+        this.setHeight(screenResolutionY / PROPORTION);
 
         this.isVisible = true;
 
-        int padding = screenResolutionX / 25;
+        int padding = screenResolutionX / SCREEN_PADDING;
 
         this.setCoordinateX(column * (this.getLength() + padding));
         this.setCoordinateY(row * (this.getLength() + padding / 4));
@@ -72,21 +72,21 @@ public class Invader extends Craft{
         }
 
         this.setCoordinateY(this.getCoordinateY() + this.getHeight());
-        this.setShipSpeed(this.getShipSpeed() * 1.18f); // 1.18f = SPEED_COEFFICIENT
+        this.setShipSpeed(this.getShipSpeed() * SPEED_COEFFICIENT);
     }
 
     public boolean takeAim(float playerShipX, float playerShipLength) {
         int randomNumber = -1;
 
         if(isInPosition(playerShipX, playerShipLength)) {
-            // A 1 in 500 chance to shoot
+            // A 1 in 150 chance to shoot
             randomNumber = generator.nextInt(150);
             if(randomNumber == 0) {
                 return true;
             }
         }
 
-        // If firing randomly (not near the player) a 1 in 5000 chance
+        // If firing randomly (not near the player) a 1 in 2000 chance
         randomNumber = generator.nextInt(2000);
         if(randomNumber == 0){
             return true;
@@ -100,17 +100,19 @@ public class Invader extends Craft{
                 playerShipX + playerShipLength < this.getCoordinateX() + this.getLength()) ||
                 (playerShipX > this.getCoordinateX() && playerShipX < this.getCoordinateX() + this.getLength());
     }
+    public final int LEFT = 1;
+    public final int RIGHT = 2;
 
     private Random generator = new Random();
 
     private Bitmap movementShiftUp;
     private Bitmap movementShiftDown;
 
-    public final int LEFT = 1;
-    public final int RIGHT = 2;
-
     private int shipMoving = RIGHT;
 
     private boolean isVisible;
 
+    private final int PROPORTION = 20;
+    private final float SPEED_COEFFICIENT = 1.18f;
+    private final int SCREEN_PADDING = 25;
 }
