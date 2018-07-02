@@ -90,7 +90,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
             cancel = true;
         }
 
-        // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             emailView.setError(getString(R.string.error_field_required));
             focusView = emailView;
@@ -102,12 +101,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
             showProgress(true);
             authTask = new UserLoginTask(email, password);
             authTask.execute((Void) null);
@@ -115,7 +110,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         //TODO: Check for a row in the db for this email
         return email.contains("@");
     }

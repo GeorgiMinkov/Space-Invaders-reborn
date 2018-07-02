@@ -1,9 +1,13 @@
 package fmi.course.simmim.spaceinvaders;
 
+import android.app.Activity;
+import android.app.Instrumentation;
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
