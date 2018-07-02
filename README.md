@@ -17,3 +17,7 @@ Structure:
 
 - LoginActivity - connect user to game
 - SpaceInvadersActivity - design of the game, connect all needed part together (Invader, PlayerShip, DefenceBrick, Bullet, SpaceInvaderView)
+- SoaceInvaderView - will be the view of the game. It will also hold the logic of the game and respond to screen touches as well
+- Invader - holds information for attackers
+- PlayerShip - control based (from user input) object
+- DefenceBrick - freezed object for game logic defence purpose
