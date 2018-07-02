@@ -30,11 +30,6 @@ public class GameTest {
        Assert.assertEquals(expectedResult, loadedBullet.shoot(startX, startY, direction));
    }
 
-   @Test
-   public void testIfInvaderWillShoot() {
-
-   }
-
     @Test
     public void testIfPausingStateIsTrueWhenGameIsPaused() {
         Context currentState = InstrumentationRegistry.getTargetContext();
